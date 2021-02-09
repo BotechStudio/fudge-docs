@@ -1,76 +1,78 @@
 module.exports = {
-  title: 'Fudge',
-  tagline: 'Fully implemented web application with both client and server code ready for use!',
+  title: "Fudge",
+  tagline:
+    "Fully implemented web application with both client and server code ready for use!",
   customFields: {
-    tagline_more: 'Skip all the hard initial work and focus on your own project core',
-    tagline_note: 'Based on best practices and latest technologies',
+    tagline_more:
+      "Skip all the hard initial work and focus on your own project core",
+    tagline_note: "Based on best practices and latest technologies",
   },
-  url: 'https://botechstudio.github.io',
-  baseUrl: '/',
-  onBrokenLinks: 'throw',
-  favicon: 'img/logo.ico',
-  organizationName: 'BotechStudio', // Usually your GitHub org/user name.
-  projectName: 'fudge-docs', // Usually your repo name.
+  url: "https://botechstudio.github.io",
+  baseUrl: "/",
+  onBrokenLinks: "throw",
+  favicon: "img/logo.ico",
+  organizationName: "BotechStudio", // Usually your GitHub org/user name.
+  projectName: "fudge-docs", // Usually your repo name.
   themeConfig: {
     colorMode: {
       disableSwitch: true,
     },
     navbar: {
-      title: 'Fudge',
+      title: "Fudge",
       logo: {
-        alt: 'Fudge',
-        src: 'img/logo.svg',
+        alt: "Fudge",
+        src: "img/logo.svg",
       },
       items: [
         {
-          to: 'docs/project-stracture',
-          activeBasePath: 'docs',
-          label: 'Documentation',
-          position: 'left',
+          to: "docs/project-structure",
+          activeBasePath: "docs",
+          label: "Documentation",
+          position: "left",
         },
         {
-          href: 'http://shop.botech.studio',
-          label: 'Pricing',
-          position: 'left',
+          href: "http://shop.botech.studio",
+          label: "Pricing",
+          position: "left",
         },
         // {to: 'blog', label: 'Blog', position: 'left'},
         {
-          href: 'https://botech.studio',
-          label: 'by botech.studio',
-          position: 'right',
+          href: "https://botech.studio",
+          label: "by botech.studio",
+          position: "right",
         },
       ],
     },
     footer: {
-      style: 'dark',
+      style: "dark",
       links: [
         {
-          title: 'Docs',
+          title: "Docs",
           items: [
             {
-              label: 'How to Install',
-              to: '/docs/installation',
+              label: "How to Install",
+              to: "/docs/installation",
             },
             {
-              label: 'Project Structure',
-              to: 'docs/project-stracture',
+              label: "Project Structure",
+              to: "docs/project-structure",
             },
             {
-              label: 'What Fudge is based on',
-              to: 'docs/based-on',
+              label: "What Fudge is based on",
+              to: "docs/based-on",
             },
           ],
         },
         {
-          title: 'Download Fudge',
+          title: "Download Fudge",
           items: [
             {
-              label: 'Purchase Page',
-              href: 'http://shop.botech.studio',
+              label: "Purchase Page",
+              href: "http://shop.botech.studio",
             },
             {
-              label: 'Personal Area',
-              href: 'http://shop.botech.studio/download',
+              label: "Personal Area",
+              href: "http://shop.botech.studio/download",
             },
           ],
         },
@@ -92,11 +94,11 @@ module.exports = {
         //   ],
         // },
         {
-          title: 'More',
+          title: "More",
           items: [
             {
-              label: 'Web Apps Development',
-              href: 'https://botech.studio',
+              label: "Web Apps Development",
+              href: "https://botech.studio",
             },
           ],
         },
@@ -106,10 +108,10 @@ module.exports = {
   },
   presets: [
     [
-      '@docusaurus/preset-classic',
+      "@docusaurus/preset-classic",
       {
         docs: {
-          sidebarPath: require.resolve('./sidebars.js'),
+          sidebarPath: require.resolve("./sidebars.js"),
           // Please change this to your repo.
           // editUrl:
           //   'https://github.com/facebook/docusaurus/edit/master/website/',
@@ -121,7 +123,7 @@ module.exports = {
         //     'https://github.com/facebook/docusaurus/edit/master/website/blog/',
         // },
         theme: {
-          customCss: require.resolve('./src/css/custom.css'),
+          customCss: require.resolve("./src/css/custom.css"),
         },
       },
     ],

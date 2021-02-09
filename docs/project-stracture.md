@@ -1,9 +1,10 @@
 ---
-id: project-stracture
-title: Project stracture
+id: project-structure
+title: Project structure
 ---
 
-### Files stracture tree
+### Files structure tree
+
 ```
 ── root-directory
     ├── init.js
@@ -33,6 +34,7 @@ The **CMS** built to enable the admins to contorl and manage the app data.
 the admin can update/modify/delete users data (can be switched to any collection) and be aware of any change at the app.
 
 main parts:
+
 - **Main app.js** - admin > app > app.js
 - **Routes** - admin > app > containers > App > index.js
 - **Screens** - admin > app > containers
@@ -42,9 +44,10 @@ main parts:
 
 ### Client overview
 
-The **front-end** built with efficient code splliting and maintainable stracture that aims to cut dramatically the time waste that appears when starting a new project.
+The **front-end** built with efficient code splliting and maintainable structure that aims to cut dramatically the time waste that appears when starting a new project.
 
 main parts:
+
 - **Main app.js** - client > app > app.js
 - **Routes** - client > app > containers > App > index.js
 - **Screens** - client > app > containers
@@ -52,12 +55,12 @@ main parts:
 - **Global styles** - client > app > global-styles.js
 - **Main saga** - client > app > containers > App > saga.js
 
-
 ### Server overview
 
 The **back-end** built using node & express js best practices and with the most advanced node packages.
 
 main parts:
+
 - **Main app.js** - server > app.js
 - **Controllers** - server > controllers
 - **DB** - server > db > db.js
