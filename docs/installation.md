@@ -11,7 +11,7 @@ Installation script is based on npm and installs node modules into your project.
 
 ### Preconditions
 
-1. node.js is installed, if not, visit https://nodejs.org/
+1. Node.js is installed, if not, visit https://nodejs.org/
 2. MongoDB is installed, if not, visit https://mongodb.com/
 
 Make sure you downloaded the .zip file and extracted it with the password given to a desired path.
