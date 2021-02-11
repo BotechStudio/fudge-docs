@@ -11,40 +11,34 @@ Installation script is based on npm and installs node modules into your project.
 
 ### Preconditions
 
-1. Node.js is installed, if not, visit https://nodejs.org/
-2. MongoDB is installed, if not, visit https://mongodb.com/
+1. Node.js is installed, If not, visit https://nodejs.org/.
+2. MongoDB is installed, If not, visit https://mongodb.com/.
+3. Yarn is installed, If not, visit https://yarnpkg.com/.
 
 Make sure you downloaded the .zip file and extracted it with the password given to a desired path.
 
 ### Getting started
 
 :::note
-For this guide, assume the extracted files are at 'C:\fudgeProject'
+For this guide, assume the extracted files are at '/fudgeProject'
 :::
 
 1. Navigate to the path where you extracted the .zip to and make sure the following files and folders exists (depending the license you've purchased)
 
-   1. case of Basic Licence - 3 Folders: client, server, mockdata. 2 Files: init.js, package.json.
-   2. case of Premium Licence - 3 Folders: client, server, mockdata. 2 Files: init.js, package.json.
-   3. case of Extended Licence - 4 Folders: admin, client, server, mockdata. 2 Files: init.js, package.json.
+   1. Case of Basic Licence - 3 Folders: client, server, mockdata. 2 Files: init.js, package.json.
+   2. Case of Premium Licence - 3 Folders: client, server, mockdata. 2 Files: init.js, package.json.
+   3. Case of Extended Licence - 4 Folders: admin, client, server, mockdata. 2 Files: init.js, package.json.
 
-2. Open cmd and navigate to the specific, for ex. to 'C:\fudgeProject'
+2. Open terminal and navigate to the specific folder, for ex. to '/fudgeProject'.
 
-3. Type `npm i` and press Enter.
+3. Run `npm i`.
 
-4. The installation will start.
+4. Once the installation completed, navigate to server folder '/fudgeProject/server' and run `npm run dev`.  
+   The server is now up and you can see the line says 'Server running on port 8000'.
 
-   1. First step - initializing the database with mock data.
-   2. Second step - installing node.js modules.
+5. Open second terminal window and navigate to the client folder '/fudgeProject/client' and run `npm start`.  
+   The client is now up and you can see the line says 'Localhost: http://localhost:3000'.
 
-5. Once the installation completed, open another cmd window and navigate to the same path.
+6. With your browser navigate to 'http://localhost:3000' to see client side.
 
-6. Through one of the windows navigate to server folder 'C:\fudgeProject\server', type `npm run dev` and press Enter.
-   The server is now up and you can see the line says 'Server running on port 4000'
-
-7. Through one of the windows navigate to client folder 'C:\fudgeProject\client', type `npm start` and press Enter.
-   The client side is now up and you can see the line says 'Localhost: http://localhost:3000'
-
-8. With your browser navigate to 'http://localhost:3000' to see client side.
-
-9. With you favourite IDE supporting JavaScript open the root folder 'C:\fudgeProject' and start editing your application.
+7. With you favourite IDE supporting JavaScript open the root folder '/fudgeProject' and start editing your application.
