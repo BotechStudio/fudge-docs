@@ -19,7 +19,7 @@ Here's how we can add **public** and **private** pages in 2 simple steps:
 
 1.1 Navigate to **client > app > containers**,
 
-1.2 Create a continer folder for the public page, for example it will be named NewPage.
+1.2 Create a container folder for the public page, for example it will be named NewPage.
 
 1.3 Inside the container folder, create an index.js file with next file content (React component):
 
