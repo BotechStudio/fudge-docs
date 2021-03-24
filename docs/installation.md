@@ -36,7 +36,7 @@ For this guide, assume the extracted files are at '/fudgeProject'
 4. Once the installation is complete, navigate to the server folder '/fudgeProject/server' and run `npm run dev`.  
    The server is now up and running and you can see that your terminal states: 'Server running on port 8000'.
 
-5. Open a second terminal window and navigate to the client folder '/fudgeProject/client' and run `npm start`.  
+5. Open a second terminal window and navigate to the client folder '/fudgeProject/client' and run `npm run start`.  
    The client is now up and running and you can see that your terminal states: 'Localhost: http://localhost:3000'.
 
 6. With your browser navigate to 'http://localhost:3000' to see client side.
