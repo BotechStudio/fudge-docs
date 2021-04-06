@@ -102,7 +102,7 @@ function Home() {
                 'button button--outline button--lg',
                 styles.white_text,
               )}
-              to={'http://demo.botech.studio'}>
+              to={'https://demo.fudgetemplate.com'}>
               View Demo
             </Link>
             <div style={{ width: '15px' }}></div>
@@ -111,7 +111,7 @@ function Home() {
                 'button button--outline button--lg',
                 styles.green_text,
               )}
-              to={'http://shop.botech.studio/'}>
+              to={'https://fudgetemplate.com'}>
               Download
             </Link>
 
