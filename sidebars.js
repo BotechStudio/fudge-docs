@@ -7,6 +7,7 @@ module.exports = {
     "add-end-point",
     "getting-data-server",
     "adding-field-DB",
+    "email-sending",
     "auth-middleware",
     "using-translations",
     "handling-errors",
