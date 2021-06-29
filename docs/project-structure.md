@@ -30,8 +30,7 @@ title: Project structure
 
 ### Admin overview
 
-The **CMS** built to enable the admins to contorl and manage the app data.
-the admin can update/modify/delete users data (can be switched to any collection) and be aware of any change at the app.
+The **CMS** was built to enable the admins to control and manage the app data. The admin can update/modify/delete user data (can be switched to any collection), while remaining aware of any changes made on the app.
 
 main parts:
 
@@ -44,7 +43,7 @@ main parts:
 
 ### Client overview
 
-The **front-end** built with efficient code splliting and maintainable structure that aims to cut dramatically the time waste that appears when starting a new project.
+The **front-end** was built with efficient code splitting and a maintainable structure that aims to dramatically cut time that is traditionally wasted, when starting a new project.
 
 main parts:
 
@@ -57,7 +56,7 @@ main parts:
 
 ### Server overview
 
-The **back-end** built using node & express js best practices and with the most advanced node packages.
+The **back-end** was built using node & express js best practices. The most advanced node packages were applied.
 
 main parts:
 
