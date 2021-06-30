@@ -3,13 +3,11 @@ id: add-end-point
 title: Add new end point
 ---
 
-### Intro
+### Introduction
 
-Fudge's server created by using Node & Express js.
-By using those cutting edge technologies, we created an authentication system that allows to 
-protect some routes and expose others.
+Fudge’s server was created using Node & Express js. By using these cutting-edge technologies, we were able to create an authentication system that allows you to protect some routes, and expose others.
 
-In this light and easy tutorial, we will guide you step by step how to create a completly new server end point with or without **auth**.
+This light and easy tutorial will guide you through creating a completely new server and end-point, with or without authentication.
 
 
 :::note
@@ -43,7 +41,7 @@ exports.exampleRoute = async (req, res) => {
 
 2.1 Navigate to **server > router** and create a "routes container" file.
 
-2.2  In the file, make sure to import express, express router, the new route you just created, and the auth middleware if you want to create a protected route.
+2.2  Once in the file, make sure to import express, express router, the new route you just created, and the auth middleware if you want to create a protected route.
 
 ```javascript
 const express = require('express');
@@ -64,11 +62,9 @@ router.post('/example/protected', auth, controller.exampleRoute);
 module.exports = router;
 ```
 
-pay attension, the first route created above, is not protected.
-whice means every user can hit this end point.
+Pay attention! The first route created above is not protected. This means that any user can hit this end-point.
 
-the second one on the other hand, is a protected route, only authenticated users are allowd to call this
-end point.
+The second one, however, is protected. Only authenticated users can call this end-point.
 
 ### Step three
 
@@ -80,7 +76,7 @@ end point.
 const exampleRouter = require("./routers/example");
 ```
 
-3.3 Sign the router to the app with "use" method which provided by express
+3.3 Apply the router to the app with the "use" method which provided by express
 
 ```javascript
 app.use(exampleRouter);
