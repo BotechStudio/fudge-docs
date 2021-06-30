@@ -3,20 +3,21 @@ id: handling-errors
 title: Errors handling
 ---
 
-### Intro
+### Introduction
 
-As our application grows, the way we are handling errors should become more elegant, clean and efficient to prevent missunderstadings and time waste.
+As our applications grow, we continue to take measures to ensure our handling of errors becomes more elegant, clean, and efficient.
+In doing so, we strive to prevent misunderstandings and wasted time.
 
-Fudge's team, created a simple and maintainable way to handle errors by using **redux**'s state and a
-general error modal (wich can be replaced).
+The Fudge team created a simple and maintainable method for handling errors that uses **redux’s**s state and a general error model (that can be replaced).
 
 
 ### The state
 
-At any given time, the application holds in redux's state a value called "error".
-the "error" holds a boolean value wich determines wether or not to give the end-user an indication about erorr happening.
+At any given time, the application holds an “error” value that determines whether or not an end-user should be notified about errors taking place. 
+This value is held in redux’s state.
 
-The initial error state can be found at: <br/> **client > app > containers > App > reducer.js**
+
+The initial error state can be found in: <br/> **client > app > containers > App > reducer.js**
 
 ```javascript
 export const initialState = {
@@ -28,14 +29,13 @@ export const initialState = {
 
 ### Error handling steps
 
-To update the redux error state value, we should make several steps:
+Follow these steps to update the redux error state value:
 - Create an action
 - Create a constant
 - Add a specific corresponding case in the reducer
 - Dispatch the action with some event
 
-examples:
-
+For example:
 
 **Action**
 ```javascript
@@ -67,23 +67,24 @@ onClick={() => dispatch(setError())}
 ### Use case
 
 :::note
-For the use case example, we will take a look at the "signUpUser" error handling flow.
-wich located in **client > app > containers > SignUpUser > saga.js**.
+
+For the purpose of this use case/example, see the “signUpUser” handling flow, located in **client > app > containers, SignUpUser >sage.js**.
+
 :::
 
-As we can see at the saga.js file, the api call placed inside try/catch block. the reason for that is the fact that if somthing went wrong at the server or with the call to the end point, we want to activate an **action** that will update the error's state. as we can see:
+As you can see, the API call was placed inside of the try/catch block. This, so that if something goes wrong with the server or the call to the end-point, an action can be activated to update the error’s state.
 
 ```javascript
 yield put(userSignUpError(err));
 ```
 
-the userSignUpError action imported from actions.js as we can see at the top of the file:
+the userSignUpError action was imported from actions.js as indicated at the top of the file:
 
 ```javascript
 import { userSignUpError } from '../App/actions';
 ```
 
-the action accept's the server response (if exists) and decide's what to return:
+The action accepts the server response (so long as it exists), and decides what to return.
 
 ```javascript
 export function userSignUpError(error) {
@@ -108,4 +109,4 @@ export function userSignUpError(error) {
 }
 ```
 
-then, the error state updated and indicates the end-user that somthing went wrong.
+The error state is then updated to indicate to the end-user that something went wrong.
