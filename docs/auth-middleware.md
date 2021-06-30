@@ -3,32 +3,35 @@ id: auth-middleware
 title: The auth middleware
 ---
 
-### Intro 
+### Introduction 
 
-The fudge's team, created a simple and secure **authentication** process that enable to expose loged in users to sensitive information and block unloged users from it.
+The Fudge team created a simple and secure authentication **process** that enables you to expose your logged-in users to sensitive information, 
+while blocking access to users who are not logged in.
 
-down below, you will find all the information about the **proccess**, how it works and how to update it by your needs.
+Below you will find all the information you need about this process, how it works and how you can update it to meet your needs.
 
 :::note
-Please navigate to **server > middleware > auth.js** and follow the steps down below.
+Please navigate to **server > middleware > auth.js** and follow the steps below.
 :::
 
 ### The auth logic
 
-Inside the auth file, we can find all the **authentication logic** of our app. in fudge, we are using the auth as a middleware, you can read more about it at the official express [docs](https://expressjs.com/en/guide/using-middleware.html).
+Inside the authentication (auth) file, you will find all the app’s **authentication logic**. 
+In Fudge, we use the auth logic as middleware. See the official Express [docs](https://expressjs.com/en/guide/using-middleware.html) to learn more.
 
-As we can see, the first thing happnes is the token validation.
-fudge is making use of [JWT](https://jwt.io) for the authentication process to verify the user identity.
+As you can see, the first step to take place is token validation. 
+Fudge makes use of [JWT](https://jwt.io) to verify the user’s identity.
 
-after taking the token from the request header, we are verifying the token:
+Once the token is taken from the request header, it can be verified as follows:
 
 ```javascript
 const data = jwt.verify(token, process.env.JWT_KEY);
 ```
 
-by verifying the token, we can indicate whether or not the user is signed up, logged in or can be found at the DB.
+Verifying the token allows us to indicate whether or not the user has signed up, is logged in, or can be found in the DB.
 
-### The auth usage
+
+### auth usage
 
 the use of auth located inside the routes as an argument, example:
 
@@ -36,18 +39,18 @@ the use of auth located inside the routes as an argument, example:
 router.post('/users/logout', auth, controller.logOut);
 ```
 
-can be found at **server > routers > user.js**.
+The example above can be found at **server > routers > user.js**.
 
 ### Admin auth
 
-The auth proccess can include admin authentication also, as we can see at **server > conrollers > data.js**.
-the routes we are looking at are protected and visible for admins only, what cousing that is:
+The auth process can also include admin authentication, which can be found in **server > controllers > data.js**.
+These routes are protected, visible to admins only. This is caused by:
 
 ```javascript
 const { isAdmin } = req.user
 if(!isAdmin) return res.send('User is not admin')
 ```
 
-as we can see, the user object is returned from the auth middleware, then we check for ``isAdmin`` field.
-if the the field holds positive value (true) the user is admin and he gain an access to that route.
+As you can see, the user object was returned from the auth middleware. 
+You can then check the ``isAdmin`` field; if it holds a positive value (is true), then the user is an admin and is granted access to the route.
 
