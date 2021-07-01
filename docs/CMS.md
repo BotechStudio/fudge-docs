@@ -3,11 +3,11 @@ id: CMS
 title: CMS
 ---
 
-### Intro
+### Introduction
 
-We have implemented in fudge a simple and easy to update **Control Management System** that will help the platform admin to track, update and delete data directly from the DB and manage all the **collections** that he holds.
+We have implemented a simple and easy-to-update **Control Management System** (CMS) within Fudge. The CMS helps the platform admin track, update, and delete data directly from the DB, while managing all **collections**.
 
-in order to view the admin section, please navigate to the **admin** root folder.
+To view the admin section, please navigate to the **admin** root folder.
 
 :::note
 More comprehensive overview can be found at the **Project structure** section.
@@ -15,13 +15,9 @@ More comprehensive overview can be found at the **Project structure** section.
 
 ### Add new collection
 
-In order to use the **CMS** properly, the app collections should be added to the admin's CMS.
-down below you will find explanation on how to do so, for this instance we will implement a **products** collection.
-please make sure to create a [Schema](./adding-field-DB.md) before you continue reading this guide.
+To properly use the **CMS**, ensure that the app collections are added to the admin’s CMS. Below you will find explanations on how this is done. As an example, we will implement a product collection. Please make sure to create a [Schema](./adding-field-DB.md) before continuing to read this guide.
 
-First, we will create a products connector at **server > connectors** wich will handle all of our server logic.
-the connector should be a class and should **extend** the base connector.
-the base connector that we are extending to create our new connector (products) handles simple operations like get, create, update and etc.
+First, we will create a product connector in **server > connectors**. It will handle all of our **server** logic. The connector should be a class and extend the base connector. The base connector that we are extending to create our new product connector handles simple operations, such as: get, create, update, etc.
 
 ```javascript
 const getDB = require("../models/index.js");
@@ -89,8 +85,7 @@ module.exports = class BaseConnector {
 };
 ```
 
-to implement those operations we dont need to create any other connector.
-in order to create new operations, like get a single document from the db, we will have to create a new connector with the correspond logic inside.
+There is no need to create other connectors, merely to implement those operations. However, to create new operations, such as to receive a single document from the DB, you will have to create a new connector that contains the corresponding logic.
 
 ```javascript
 class ProductsConnector extends BaseConnector {
@@ -106,10 +101,9 @@ class ProductsConnector extends BaseConnector {
 }
 ```
 
-at the example above, the `ProductsConnector` retrieving a specific document from the products collection. fill free to add more functionality to the connector (like remove, update and etc).
+In the above example, the `ProductsConnector` retrieves a specific document from the Products collection. Feel free to add additional functionalities to the connector (such as remove, update, etc.), as you see fit.
 
-after we have created the the relevant connector, we will continue and create a route.
-inside **server > controllers > data.js**.
+Once we created the relevant connector, we must move on and create a route inside **server > controllers > data.js**.
 
 ```javascript
 exports.fetch = function (req, res) {
@@ -132,33 +126,31 @@ exports.fetch = function (req, res) {
 };
 ```
 
-pay attention, for security reasons please make sure to add the admin **authentication**
-to prevent from other users to reach this route, use the `isAdmin` field like above.
-more information about admin authentication can be found at the **auth middleware** section.
+Note that, for security reasons, you must make sure to add an admin **authentication**, so that other users cannot reach this route. Use the `isAdmin` field like in the example above. More information on admin authentication can be found in the **auth middleware** section.
 
-as we can see, we are making use of the connector we have just created and getting back the **docs** (can be change to any other logic or purpose).
+As you can see, we are using the corridor we just created to receive the **docs** (which can be changed to any other logic or purpose).
 
-make sure to add the route to the admin router wich located at ** server > routers > admin.js**, more about routes can be foind [here](./add-end-point.md).
+Make sure to add the route to the admin router, located in server > router > admin.js. More on routes can be found [here](./add-end-point.md).
 
 ### Update the UI
 
-After we done with the **end-point and connectors** setup we can continue to the UI.
-generally, we can display the data how we want (list, table and etc). <br />
-at this section, we will take a look at the **fornt-end** and will display the data we get back from the server.
+After you’ve finished setting up the **end-point connectors**, continue to the UI.
+Generally, you can choose how to display your data. <br />
+
+In this section, we will take a look at the **front-end** and will display the data received back from the server.
 
 :::note
-Please navigate to **admin > app > models** and create a folders named products.
-we will implement all the UI inside that folder.
+Please navigate to **admin > app > models** and create a folder called “Products.” All of the UI will be implemented within this folder.
 :::
 
-Inside the products folder, create 3 files.
+Once inside the folder, create four files:
 
 - schema.js
 - products.js
 - product.js
 - index.js
 
-let's open **schema.js** and add some code inside:
+For the purpose of this example, open **schema.js** and add some code inside:
 
 ```javascript
 import {
@@ -181,14 +173,12 @@ const Schema = {
 };
 ```
 
-as we can see, we are importing some input **components** (can be replced to any component you want), those **inputs** will placed at the view of **each** item that we get from the server.
-make sure to have a default field that will return generic label.
-the format name will be displayed at the app (if you want to).
+As you can see, we are importing some input **components** (which can be replaced with any type of components you wish). These **inputs** will be placed within the view of any item received from the server.
+Make sure to have a default field that will return the generic label. If you wish, you can program the format name to be displayed in the app.
 
-at the file **products.js** we will display all the data we get from the server, in any way we want. please choose any structure you prefer (list, table and etc).
+The **products.js** file displays all of the data obtained from the server, in the manner of your choosing (list, table, etc.).
 
-open the **product.js** file and create a **react component**, also please import the **schema** from schema.js.
-as we can see down below, on every click on one of the documents at the data structure you picked (list or table) we will open the **product component**. the product component will make a use of the components imported at the schema.js.
+Open the **product.js** file and create a **react component**. Next, please import the **schema** from schema.js, as in the example below. Every time you click on a selected data structure document, a product component will be opened. The product component will use the **components** that were imported to schema.js.
 
 ```javascript
 const constructFields = () => {
@@ -212,9 +202,7 @@ const constructFields = () => {
 };
 ```
 
-open the **index.js** file and import product.js and products.js.
-this "container" file will make the switch between the two and make sure when we are choosing a document, the only document will be shown with the schema components.
-the implementation will look somthing like this:
+Open the **index.js** file and import product.js and products.js. This “container” file will make the switch between the two and ensure that selected documents will only be shown with schema components. The implementation looks something like this:
 
 ```javascript
 {
@@ -226,8 +214,9 @@ the implementation will look somthing like this:
 }
 ```
 
-then, when we click on one of the documents a editable form will be open with the specific doc details.
+When you click on one of the documents, an editable form containing specific doc details will open.
 
 :::info
-A full example can be found at **admin > app > models > users**, fudge's team have implemented all the logic above over there.
+A full example can be found in **admin > app > models > users**. The Fudge team implemented all of the above logic within this folder.
+
 :::
