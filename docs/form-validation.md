@@ -3,54 +3,55 @@ id: form-validation
 title: Form validation
 ---
 
-### Intro
+### Introduction
 
-In order to create simple yet secure form validations, fudge's team uses the [react-hook-form](https://react-hook-form.com) validation package.
+To create simple and secure form validations, the Fudge team uses the [react-hook-form](https://react-hook-form.com) validation package.
 
-the react-hook-form package enable to create a performant, flexible and extensible forms with easy to use validation.
+the react-hook-form package enable to create a flexible and extensible forms with easy to use validation.
 
 :::note
-For instace, we will take a look at the reset password modal form validation, wich located at **client > app > components > ResetPassModal > index.js**.
+
+Take a look at the reset password model of form validation, located in **client > app > components > ResetPassModel > index.js**.
 :::
 
 ### Use case
 
-As we can see, the "useForm" method wich provided by react-hook-form is imported at the top of the file:
+As you can see, the “useForm” method provided by react-hook-form is imported to the top of the file:
 
 ```javascript
-import { useForm } from 'react-hook-form';
+import { useForm } from "react-hook-form";
 ```
 
-the **useForm** function, takes three parameters as arguments like so:
+The `useForm` function uses three parameters as arguments:
 
 ```javascript
 const { register, handleSubmit, errors } = useForm({
-    validationSchema: createSchemaWithIntl(intl)
+  validationSchema: createSchemaWithIntl(intl),
 });
 ```
 
-- **register** - a function that "register's" the specific input to the react form hook <code>ref={register}</code>.
-- **handleSubmit** - the function that is activated when the form submit's.
-- **errors** - the errors may occur during the form submittion.
+- **register** - a function that registers the specific input into the react-form-hook <code>ref={register}</code>.
+- **handleSubmit** - a function that is activated upon the form’s submission.
+- **errors** - errors that may occur during the form’s submission.
 
-The **validation process** composed from few parts: the useForm, messages for validation errors and validation rules. as we allready saw, the useForm hook handle the submit, getting the errors and register inputs to the form.
+The **validation process** is composed of a few parts: the useForm, messages indicating validation errors, and validation rules. As seen above, the useForm hook handles the submission, receives notification of errors, and registers inputs into the form.
 
-the validation messages that related to the resetPassModal form, located at **client > app > components > ResetPassModal > validation.js** and defines the validation errors may occur:
+The validation messages are relayed to the resetPassModel form, located in **client > app > components > ResetPassModel > validation.js**. It defines the validation errors that may occur
 
 ```javascript
 const messages = defineMessages({
   emailRequired: {
     id: `${scope}.emailRequired`,
-    defaultMessage: 'Email is required',
+    defaultMessage: "Email is required",
   },
   emailValid: {
     id: `${scope}.emailValid`,
-    defaultMessage: 'Email must be a valid email',
-  }
+    defaultMessage: "Email must be a valid email",
+  },
 });
 ```
 
-the last part of the form validation is the rules. the rules of our form defined at **client > app > components > ResetPassModal > validation.js** and takes care about the validation shape.
+The last part of the form validation is made up of the rules. The rules of our form are defined in **client > app > components > ResetPassModel > validation.js** and secure the validation’s shape.
 
 ```javascript
 export const createSchemaWithIntl = (intl) => {
@@ -58,9 +59,9 @@ export const createSchemaWithIntl = (intl) => {
     email: yup
       .string()
       .required(intl.formatMessage(messages.emailRequired))
-      .email(intl.formatMessage(messages.emailValid))
+      .email(intl.formatMessage(messages.emailValid)),
   });
 };
 ```
 
-as we can see, the shape created using [yup](https://www.npmjs.com/package/yup) package wich is a JavaScript schema builder for value parsing and validation.
+As you can see, the shape was created using the [yup](https://www.npmjs.com/package/yup) package, a JavaScript schema builder for value parsing and validation.
