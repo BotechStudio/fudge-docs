@@ -3,111 +3,105 @@ id: socket-notifications
 title: Socket.io notifications
 ---
 
+### Introduction
 
-### Intro
+Fudge allows you to send a notification to specific or all users, when an event takes place. This push notification functionality was implemented with **Socket.io**.
 
-Fudge allows you to notify a specific user or all users when an event occurs.
-This push notification functionality has been implemented with **Socket.io**.
-
-Here's how we can set **new notification** in few steps, using example of notify user when his item is ready.
+The following is an example of how to set up a notification that tells a user that their item is ready, in just a few steps.
 
 :::note
 
-Please navigate to the main **server** folder in your project before you start following the creation steps.
+Please navigate to your project’s main **server** folder, before following the creation steps.
 
 :::
 
+### Setting up a new notification
 
-### Setting new notification
+1.1 Navigate to **server > services > socketServices.js**,
 
-1.1 Navigate to **server > services > socketServies.js**,
-
-1.2 Create events dictionary, where key is capital letters and value is lowercase letters, for example:
-
+1.2 Create an event dictionary, with the key being capital letters and the value being lower case letters. For example:
 
 ```javascript
 const events = {
-  GENERATE_COMPLETE: 'generate_complete'
+  GENERATE_COMPLETE: "generate_complete",
 };
 ```
 
-### Sending the notification from server side
-2.1 Navigate to where you wold like to send the notification from,
-and import **events** and **sockets** as below.
+### Sending the notification from the server side
+
+2.1 Navigate to where you would like to send the notification form.
+Import **events** and **sockets** like in the example below:
 
 ```javascript
-const sockets = require('../events/sockets');
-const { events: SocketEvents } = require('../services/socketService');
+const sockets = require("../events/sockets");
+const { events: SocketEvents } = require("../services/socketService");
 ```
 
-2.2 Using **emit** function by **sockets** will throw dispatch, you should transfer **'notify-user'** to notify a specific user or **'notify-users'** for notifying group of users.
+2.2 Using **emit** function by the **sockets** will throw a dispatch, you should transfer **'notify-user'** to notify a specific user or **'notify-users'** for notifying group of users.
 
 1. User ID - The user identifier
 
-2. Event type - As listed under **events** object from **socketServies.js**
+2. Event type - Select from those listed under ‘Events Object,’ in socketServices.js.
 
-3. Payload - The data to send to the user. (Optional - Can be empty {})
-
+3. Payload - The data to be sent to the user (optional. This can also be left empty).
 
 ```javascript
-    sockets.emit('notify-user', [
-      user_id, // User ID
-      SocketEvents.GENERATE_COMPLETE, // Event type
-      user.products //Payload 
-    ]);
+sockets.emit("notify-user", [
+  user_id, // User ID
+  SocketEvents.GENERATE_COMPLETE, // Event type
+  user.products, //Payload
+]);
 ```
 
-
-### Recieving the notification on user side
+### Receiving the notification on the user site
 
 3.1 Navigate to **client > app > containers > App > constants.js**
 
-3.2 Create new constant and export it.
+3.2 Create and export a new constant.
 
 ```javascript
-export const GENERATE_NEW_PROJECT_SUCCESS = 'boilerplate/PRIVATE/GENERATE_NEW_PROJECT_SUCCESS';
+export const GENERATE_NEW_PROJECT_SUCCESS =
+  "boilerplate/PRIVATE/GENERATE_NEW_PROJECT_SUCCESS";
 ```
 
-3.3 Navigate to app's saga, **client > app > containers > saga.js**.
+3.3 Navigate to the app’s saga at **client > app > Containers > saga.js**.
 
-3.4 Import the const we just declared.
+3.4 Import the newly-created constant.
 
 ```javascript
-import { GENERATE_NEW_PROJECT_SUCCESS } from './constants';
+import { GENERATE_NEW_PROJECT_SUCCESS } from "./constants";
 ```
 
-3.5 Under **subscribe** function, insert the **emit** call as below with out const under type field, and payload under data field to be send to user.
+3.5 Insert the **emit** call (as seen below) under the **Subscribe** function, with the constant in the Type field and the payload in the Data field, and send it to the user.
 
 ```javascript
 function subscribe(socketParm) {
-  return eventChannel(emit => {
-    socketParm.on('generate_complete', (payload) => {
+  return eventChannel((emit) => {
+    socketParm.on("generate_complete", (payload) => {
       emit({ type: GENERATE_NEW_PROJECT_SUCCESS, data: payload });
     });
-    return () => { };
+    return () => {};
   });
 }
 ```
 
-3.6 Navigate to the reducer, **client > app > containers > App > reducer.js**
+3.6 Navigate to the reducer in **client > app > containers > App > reducer.js**
 
-3.7 Import the const we declared before.
+3.7 Import the newly-created constant.
 
 ```javascript
-import { GENERATE_NEW_PROJECT_SUCCESS } from './constants';
+import { GENERATE_NEW_PROJECT_SUCCESS } from "./constants";
 ```
 
-3.8 Insert new **case** under **produce function**, in our example we are updating **products** attribute.
+3.8 Insert a new case under the **Produce function**. See an example of updating a **product’s** attributes below:
 
 ```javascript
 const appReducer = (state = initialState, action) =>
-  produce(state, draft => {
+  produce(state, (draft) => {
     switch (action.type) {
       case GENERATE_NEW_PROJECT_SUCCESS:
         draft.products = action.data;
         break;
     }
   });
-  ```
-
-
+```
