@@ -3,19 +3,21 @@ id: adding-font
 title: Add new font
 ---
 
-### Intro
+### Introduction
 
-In order to create an maintainable and efficient application, fudge's team making use of [styled-components](https://styled-components.com), an advanced and modern styling tool.
+To create an efficient and maintainable application, Fudge’s team uses [styled-components](https://styled-components.com), an advanced and modern styling tool.
 
-the font loaded using the styled components technology inside one specific component and enable to make use of it freely.
+Fonts are loaded using styled components technology, located inside specific components, for free use.
 
 :::note
-The file tht holds the main styles called **global-styles.js**, and can be found at **client > app > global-styles.js**.
-for the example we will make a use of [google-fonts](https://fonts.google.com).
+
+The file that holds the main styles is called **global-styles.js**. It can be found in c**client > app > global-styles.js**. For the following example, we will use [google-fonts](https://fonts.google.com).
+
 :::
 
 ### Use case
-Inside global-styles.js, we are making use of **createGlobalStyle** method by styled-components, to create the main styles.
+
+To create the main styles, we chose to use **createGlobalStyle**, a styled-components method found within global-styles.js.
 
 ```javascript
 const GlobalStyle = createGlobalStyle`
@@ -25,13 +27,13 @@ const GlobalStyle = createGlobalStyle`
 `;
 ```
 
-please make sure to import the font at the **index.html** file or the css file:
+Please make sure to import the font to the **index.html** file or css file:
 
 ```javascript
 <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 ```
 
-in order to apply different font or styles, please import the wanted font and use it inside the component created. make sure to put it inside the correct section or create a new one.
+To apply different fonts or styles, please import your desired font and use it within the created component. Make sure to either place it inside the correct section, or create a new one for this purpose.
 
 example:
 
